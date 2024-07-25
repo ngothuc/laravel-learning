@@ -2,7 +2,10 @@
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRequest;
+use App\Http\Requests\UpdateRequest;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 Route::get('/', function () {
     return redirect()->route('tasks.index');
@@ -19,11 +22,9 @@ Route::get('tasks/create', function () {
 })->name('task.create');
 
 
-Route::post('task/store', function (Request $request) {
-    $data = $request->validate([
-        'title' =>'required|max:255',
-        'description' =>'required'
-    ]);
+Route::post('task/store', function (StoreRequest $request) {
+    $data = $request;
+    
     $task = new Task;
     $task->title = $data['title'];
     $task->description = $data['description'];
@@ -41,12 +42,9 @@ Route::get('tasks/{task}/edit', function (Task $task) {
     return view('edit', ['task' => $task]);
 })->name('task.edit');
 
-Route::put('tasks/{task}', function (Task $task, Request $request) {
+Route::put('tasks/{task}', function (Task $task, UpdateRequest $request) {
     
-    $data = $request->validate([
-        'title' =>'required|max:255',
-        'description' =>'required'
-    ]);
+    $data = $request;
 
     $task->title = $data['title'];
     $task->description = $data['description'];

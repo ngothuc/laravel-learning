@@ -9,10 +9,12 @@
     <div>
         <label for="title">Tiêu đề</label>
         <input type="text" id="title" name="title" value="{{$task->title}}">
+        <p>{{$errors->first('title')}}</p>
     </div>
     <div>
         <label for="description">Mô tả</label>
         <textarea id="description" name="description" value="{{$task->description}}"></textarea>
+        <p>{{$errors->first('description')}}</p>
     </div>
     <div>
         <a href="{{route('task.show', ['task' => $task])}}">Trở về</a>

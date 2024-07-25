@@ -13,6 +13,7 @@ Bắt đầu từ những chốt chặn sau đều nằm trong chiếc "hộp đ
 ### Service providers
 
 Một trong những công việc quan trọng nhất của HTTP Kernel đó chính là load các service provider. Tất cả các service provider được cấu hình trong file config/app.php. Quá trình load các service provider sẽ trải qua hai quá trình:
+
     1. Đăng ký service provider (Register service provider)
 
     2. Khởi động service provider (Bootstrap service provider)
@@ -22,6 +23,7 @@ Các service provider khởi động nhiều thành phần khác nhau của fram
 Sau khi hoàn tất load service provider, các request sẽ được gửi đến router.
 
 Làm nhiệm vụ định tuyến, nếu request đã được định tuyến, sẽ có 2 hướng rẽ
+
     1. Route -> Middleware -> Controller/Action
 
     2. Route -> Controller/Action
@@ -35,6 +37,7 @@ Trả về response sau khi xử lý xong request, theo cơ chế "hộp đen" c
 
 ### Phương thức trả về (Return method)
 Có 2 hình thức
+
     1. Trả về qua view
     
     2. Trả về không qua view

@@ -13,7 +13,9 @@ Route::get('/', function () {
 
 Route::get('/tasks', function () {
     return view('index', [
-        'tasks' => Task::all()
+        'tasks' => Task::where('completed', true)
+        ->orWhere('completed', false)
+        ->get()
     ]);
 })->name('tasks.index');
 
